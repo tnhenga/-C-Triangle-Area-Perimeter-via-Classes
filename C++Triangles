@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Evaluate{
+public:
+    virtual int getArea() = 0;
+    virtual int getPerimeter() = 0;
+};
+
+class Shape:public Evaluate{
+protected:
+    int A;
+    int B;
+    int C;
+public:
+    void setA(int a){
+        A = a;
+    }
+    int getA(){
+        return A;
+    }
+    
+    void setB(int b){
+        B = b;
+    }
+    int getB(){
+        return B;
+    }
+    
+    void setC(int c){
+        C = c;
+    }
+    int getC(){
+        return C;
+    }
+    
+};
+
+class Triangle:public Shape{
+public:
+    int getArea(){
+        return ( sqrt( ((A+B+C)/2) *  (((A+B+C)/2) - A)  * (((A+B+C)/2) - B) * (((A+B+C)/2) - C) ) );
+
+    }
+    int getPerimeter(){
+        return(A+B+C);
+    }
+};
+
+
+
+int main() {
+    Triangle r;
+    r.setA(3);
+    r.setB(4);
+    r.setC(5);
+    cout << "Area: " << r.getArea() << endl;
+    cout << "Perimeter: " << r.getPerimeter() << endl;
+
+    return 0;
+}
